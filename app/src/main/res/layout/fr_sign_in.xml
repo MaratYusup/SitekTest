@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.fragment.FrSignIn">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/fr_sign_in_login"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/fr_auth_registration_sign_in_login_text"
+        app:errorEnabled="true"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMaxTextSize="@dimen/common_auth_texts_max"
+        android:autoSizeMinTextSize="@dimen/common_auth_texts_min"
+        android:autoSizeStepGranularity="@dimen/common_auth_texts_step_granularity"
+        android:elevation="@dimen/common_auth_elevation"
+        app:layout_constraintEnd_toStartOf="@+id/fr_sign_in_guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/fr_sign_in_guideline_left"
+        app:layout_constraintTop_toTopOf="@+id/fr_sign_in_guideline_top"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fr_sign_in_login_text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_auth_text_edit_height"
+            android:inputType="textPersonName"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/fr_sign_in_password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_auth_texts_margin_top"
+        android:autoSizeMaxTextSize="@dimen/common_auth_texts_max"
+        android:autoSizeMinTextSize="@dimen/common_auth_texts_min"
+        android:autoSizeStepGranularity="@dimen/common_auth_texts_step_granularity"
+        android:autoSizeTextType="uniform"
+        android:elevation="@dimen/common_auth_elevation"
+        android:hint="@string/fr_auth_registration_sign_in_password_text"
+        app:endIconMode="password_toggle"
+        app:errorEnabled="true"
+        app:layout_constraintEnd_toStartOf="@+id/fr_sign_in_guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/fr_sign_in_guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/fr_sign_in_login"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fr_sign_in_password_text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_auth_text_edit_height"
+            android:inputType="textPassword"
+            app:errorEnabled="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/fr_sign_in_btn_login"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/common_auth_btns_height"
+        android:layout_marginTop="@dimen/common_auth_btns_margin_top"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMaxTextSize="@dimen/common_auth_btns_text_max"
+        android:autoSizeMinTextSize="@dimen/common_auth_btns_text_min"
+        android:autoSizeStepGranularity="@dimen/common_auth_btns_text_step_granularity"
+        android:elevation="@dimen/common_auth_elevation"
+        android:text="@string/common_auth_btn_login_text"
+        app:layout_constraintEnd_toStartOf="@+id/fr_sign_in_guideline_right"
+        app:layout_constraintStart_toStartOf="@+id/fr_sign_in_guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/fr_sign_in_password" />
+
+    <Button
+        android:id="@+id/fr_sign_in_btn_forget_password"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autoSizeMaxTextSize="@dimen/fr_auth_signin_forget_password_btn_text_max"
+        android:autoSizeMinTextSize="@dimen/fr_auth_signin_forget_password_btn_text_min"
+        android:autoSizeStepGranularity="@dimen/fr_auth_signin_forget_password_btn_text_step_granularity"
+        android:autoSizeTextType="uniform"
+        android:text="@string/fr_auth_sign_in_btn_forget_password_text"
+        android:textAlignment="viewStart"
+        app:layout_constraintEnd_toStartOf="@+id/fr_sign_in_guideline_right"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/fr_sign_in_guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/fr_sign_in_btn_login" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/fr_sign_in_guideline_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/fr_sign_in_guideline_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.85" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/fr_sign_in_guideline_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

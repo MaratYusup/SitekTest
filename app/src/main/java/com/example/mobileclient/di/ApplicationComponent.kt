@@ -2,6 +2,7 @@ package com.example.mobileclient.di
 
 import android.app.Application
 import com.example.mobileclient.presentation.fragment.FrAuthorization
+import com.example.mobileclient.presentation.fragment.FrSignIn
 import dagger.BindsInstance
 import dagger.Component
 
@@ -14,6 +15,7 @@ import dagger.Component
 interface ApplicationComponent {
 
     fun inject (fragment: FrAuthorization)
+    fun inject (fragment: FrSignIn)
 
     @Component.Factory
     interface Factory {
