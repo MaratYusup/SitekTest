@@ -1,24 +1,24 @@
 package com.example.mobileclient.data.mapper
 
-import com.example.mobileclient.data.network.model.UserDataDto
-import com.example.mobileclient.domain.model.UserData
+import com.example.mobileclient.data.network.model.UserDataModelDto
+import com.example.mobileclient.domain.model.UserDataModel
 import javax.inject.Inject
 
 class Mapper @Inject constructor() {
 
-    fun mapUserDataDtoToEntity(userDataDtoList: List<UserDataDto?>?): List<UserData>? {
+    fun mapUserDataModelDtoToEntity(userDataModelDtoList: List<UserDataModelDto?>?): List<UserDataModel>? {
 
-        var userDataList: List<UserData?>? = userDataDtoList?.map { userDataDto ->
+        var userDataModelLists: List<UserDataModel?>? = userDataModelDtoList?.map { userDataDto ->
             userDataDto?.let {
-                UserData(
+                UserDataModel(
                     user = userDataDto?.user,
                     uid = userDataDto?.uid,
                     language = userDataDto?.language,
                 )
             }
         }
-        userDataList = userDataList?.filterNotNull()
-        return userDataList
+        userDataModelLists = userDataModelLists?.filterNotNull()
+        return userDataModelLists
 
     }
 }

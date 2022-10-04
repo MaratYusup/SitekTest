@@ -2,7 +2,7 @@ package com.example.mobileclient.data.network.model
 
 import com.google.gson.annotations.SerializedName
 
-data class UserDataListDto (
+data class UserDataModelListDto (
     @SerializedName("ListUsers")
-    var listUsers: List<UserDataDto?>?
+    var listUsers: List<UserDataModelDto?>?
 )

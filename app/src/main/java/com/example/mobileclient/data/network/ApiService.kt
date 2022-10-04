@@ -1,7 +1,5 @@
 package com.example.mobileclient.data.network
 
-import android.util.Base64
-import com.example.mobileclient.data.network.model.UserDataDto
 import com.example.mobileclient.data.network.model.UserDto
 import retrofit2.Response
 import retrofit2.http.*

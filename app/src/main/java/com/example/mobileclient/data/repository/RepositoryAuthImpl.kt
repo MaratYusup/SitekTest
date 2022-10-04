@@ -3,8 +3,7 @@ package com.example.mobileclient.data.repository
 import android.util.Log
 import com.example.mobileclient.data.mapper.Mapper
 import com.example.mobileclient.data.network.ApiService
-import com.example.mobileclient.data.network.model.UserDto
-import com.example.mobileclient.domain.model.UserDataWithRespCode
+import com.example.mobileclient.domain.model.UserDataWithRespCodeModel
 import com.example.mobileclient.domain.repository.RepositoryAuth
 import okhttp3.Credentials
 import javax.inject.Inject
@@ -14,30 +13,30 @@ class RepositoryAuthImpl @Inject constructor(
     private val mapper: Mapper,
 ) : RepositoryAuth {
 
-    override suspend fun getUsersList(imei: String): UserDataWithRespCode {
+    override suspend fun getUsersList(imei: String): UserDataWithRespCodeModel {
         val header = Credentials.basic("http", "http")
 
         val response = try {
-            apiService.getUsersList(header = header, imei = imei,)
+            apiService.getUsersList(header = header, imei = imei)
         } catch (e: Exception) {
             null
         }
 
-        val userDataWithRespCode = UserDataWithRespCode()
+        val userDataWithRespCodeModel = UserDataWithRespCodeModel()
 
         when (response?.code()) {
             200 -> { // Успешно
                 val userDto = response.body()
-                val userDataList = mapper.mapUserDataDtoToEntity(userDto?.users?.listUsers)
-                userDataList?.let{
-                    userDataWithRespCode.userDataList = userDataList
+                val userDataList = mapper.mapUserDataModelDtoToEntity(userDto?.users?.listUsers)
+                userDataList?.let {
+                    userDataWithRespCodeModel.userDataModelLists = userDataList
                 }
-                userDataWithRespCode.responseCode = 200
+                userDataWithRespCodeModel.responseCode = 200
             }
-            else -> { // Ошибка. При наличии списка кодов ошибок от сервера, можно выдавать сообщения
+            else -> { // Ошибка
             }
         }
-        return userDataWithRespCode
+        return userDataWithRespCodeModel
     }
 
     override suspend fun authentication(
@@ -46,19 +45,33 @@ class RepositoryAuthImpl @Inject constructor(
         pass: String,
         copyFromDevice: Boolean,
         nfc: String
-    ) {
-        val response = apiService.authentication(
-            imei = imei,
-            uid = uid,
-            pass = pass,
-            copyFromDevice = copyFromDevice,
-            nfc = nfc,
-        )
+    ): Int {
+
+        val response = try {
+            apiService.authentication(
+                imei = imei,
+                uid = uid,
+                pass = pass,
+                copyFromDevice = copyFromDevice,
+                nfc = nfc,
+            )
+        } catch (e: Exception) {
+            null
+        }
 
         try {
-            Log.i("responceCode", response.code().toString())
-            Log.i("responceBody", response.body().toString())
+            Log.i("responceCode", response?.code().toString())
+            Log.i("responceBody", response?.body().toString())
         } catch (e: Exception) {
         }
+
+        when (response?.code()) {
+            200 -> { // Успешно
+                return 200
+            }
+            else -> { // Ошибка
+            }
+        }
+        return -1
     }
 }

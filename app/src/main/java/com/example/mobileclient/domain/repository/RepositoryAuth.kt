@@ -1,10 +1,10 @@
 package com.example.mobileclient.domain.repository
 
-import com.example.mobileclient.domain.model.UserDataWithRespCode
+import com.example.mobileclient.domain.model.UserDataWithRespCodeModel
 
 interface RepositoryAuth {
 
-    suspend fun getUsersList(imei: String): UserDataWithRespCode
+    suspend fun getUsersList(imei: String): UserDataWithRespCodeModel
 
     suspend fun authentication(
         imei: String,
@@ -12,5 +12,5 @@ interface RepositoryAuth {
         pass: String,
         copyFromDevice: Boolean,
         nfc: String,
-    )
+    ): Int
 }

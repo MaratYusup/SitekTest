@@ -1,13 +1,14 @@
 package com.example.mobileclient.presentation.viewmodel
 
-import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mobileclient.domain.ComFunAndConst.checkAuthFieldForCorrectness
-import com.example.mobileclient.domain.model.UserData
-import com.example.mobileclient.domain.model.UserDataWithRespCode
+import com.example.mobileclient.domain.ComFunAndConst.checkSignInResponseCode
+import com.example.mobileclient.domain.model.UserDataModel
+import com.example.mobileclient.domain.model.UserDataWithRespCodeModel
+import com.example.mobileclient.domain.usecase.AuthenticationUseCase
 import com.example.mobileclient.domain.usecase.CheckLoginFieldUseCase
 import com.example.mobileclient.domain.usecase.CheckPasswordFieldUseCase
 import com.example.mobileclient.domain.usecase.GetUsersListUseCase
@@ -17,14 +18,14 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class FrSignInVM @Inject constructor(
-    private val application: Application,
+    private val authenticationUseCase: AuthenticationUseCase,
     private val checkLoginFieldUseCase: CheckLoginFieldUseCase,
     private val checkPasswordFieldUseCase: CheckPasswordFieldUseCase,
     private val getUsersListUseCase: GetUsersListUseCase,
 ) : ViewModel() {
 
-    private var _userDataList = MutableLiveData<UserDataWithRespCode>()
-    var userDataList: LiveData<UserDataWithRespCode> = _userDataList
+    private var _userDataList = MutableLiveData<UserDataWithRespCodeModel>()
+    var userDataList: LiveData<UserDataWithRespCodeModel> = _userDataList
 
     private var _resultCheckLogin = MutableLiveData<Int?>()
     var resultCheckLogin: LiveData<Int?> = _resultCheckLogin
@@ -48,16 +49,16 @@ class FrSignInVM @Inject constructor(
     }
 
     fun compareLastSelectedUserDataAndSpinnerText(
-        userData: UserData?,
+        userDataModel: UserDataModel?,
         spinnerText: String?
-    ): UserData {
-        var newUserdata = UserData()
-        if (userData?.user?.lowercase()?.trim() == spinnerText?.lowercase()?.trim()) {
-            return userData ?: newUserdata
+    ): UserDataModel {
+        var newUserdata = UserDataModel()
+        if (userDataModel?.user?.lowercase()?.trim() == spinnerText?.lowercase()?.trim()) {
+            return userDataModel ?: newUserdata
         }
 
-        if (userData?.user != spinnerText) {
-            userDataList.value?.userDataList?.map {
+        if (userDataModel?.user != spinnerText) {
+            userDataList.value?.userDataModelLists?.map {
                 if (it?.user?.lowercase()?.trim() == spinnerText?.lowercase()?.trim()) {
                     return it ?: newUserdata
                 }
@@ -77,20 +78,17 @@ class FrSignInVM @Inject constructor(
         _resultCheckPassword.value = checkAuthFieldForCorrectness(textEditHandlerTemp)
     }
 
-//
-//    fun signIn(userName: String, password: String) {
-//        if ((_resultCheckUserName.value == null) && (_resultCheckPassword.value == null)) {
-//
-//            viewModelScope.launch {
-//                val userAuthInfoTemp = signInUserUseCase.execute(UserAuth(userName, password))
-//
-//                if (userAuthInfoTemp.responseCode != 200)
-//                    _resultCheckUserName.value = R.string.empty
-//                else
-//                    _accessAllow.value = true
-//
-//                _resultCheckPassword.value = checkSignInResponseCode(userAuthInfoTemp.responseCode)
-//            }
-//        }
-//    }
+
+    fun signIn(uid: String, password: String) {
+        if ((_resultCheckLogin.value == null) && (_resultCheckPassword.value == null)) {
+
+            viewModelScope.launch {
+                withContext(Dispatchers.IO) {
+                    val userAuthResp = authenticationUseCase.execute(uid, password)
+                    _resultCheckPassword.postValue(checkSignInResponseCode(userAuthResp))
+                    _accessAllow.postValue(userAuthResp == 200)
+                }
+            }
+        }
+    }
 }
