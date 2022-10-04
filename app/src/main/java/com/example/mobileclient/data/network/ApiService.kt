@@ -7,8 +7,11 @@ import retrofit2.http.Query
 
 interface ApiService {
 
-    @GET("{imei}" + NetConst.GET_USERS_URL)
-    suspend fun getUsers(@Path("imei") imei: String): Response<*>
+//    @GET("{imei}" + NetConst.GET_USERS_URL)
+//    suspend fun getUsers(@Path("imei") imei: String): Response<*>
+
+    @GET(NetConst.GET_USERS_URL)
+    suspend fun getUsers(): Response<*>
 
     @GET("{imei}" + NetConst.AUTHENTICATION_URL)
     suspend fun authentication(

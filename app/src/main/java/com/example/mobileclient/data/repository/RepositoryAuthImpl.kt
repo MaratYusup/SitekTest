@@ -12,7 +12,7 @@ class RepositoryAuthImpl @Inject constructor(
 ) : RepositoryAuth {
 
     override suspend fun getUsers(imei: String) {
-        val response = apiService.getUsers(imei = imei)
+        val response = apiService.getUsers()
 
         try {
             Log.i("responceCode", response.code().toString())

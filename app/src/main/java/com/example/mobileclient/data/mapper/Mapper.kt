@@ -1,4 +1,6 @@
 package com.example.mobileclient.data.mapper
 
-class Mapper {
+import javax.inject.Inject
+
+class Mapper @Inject constructor() {
 }
