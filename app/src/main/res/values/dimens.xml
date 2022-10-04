@@ -1,2 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <dimen name="common_auth_text_edit_height">50dp</dimen>
+
+    <dimen name="common_auth_texts_max">14sp</dimen>
+    <dimen name="common_auth_texts_min">8sp</dimen>
+    <dimen name="common_auth_texts_step_granularity">2sp</dimen>
+    <dimen name="common_auth_texts_margin_top">1dp</dimen>
+
+
+    <dimen name="common_auth_btns_height">55dp</dimen>
+
+    <dimen name="common_auth_btns_text_max">14sp</dimen>
+    <dimen name="common_auth_btns_text_min">8sp</dimen>
+    <dimen name="common_auth_btns_text_step_granularity">2sp</dimen>
+    <dimen name="common_auth_btns_margin_top">1dp</dimen>
+
+
+    <dimen name="auth_success_texts_max">24sp</dimen>
+    <dimen name="auth_success_texts_min">12sp</dimen>
+    <dimen name="auth_success_texts_step_granularity">2sp</dimen>
+
+
+</resources>

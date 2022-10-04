@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/AndroidProjects/TestSitek/app/src/main/res/layout/fr_sign_in.xml" value="0.11302083333333333" />
+        <entry key="..\:/AndroidProjects/TestSitek/app/src/main/res/layout/activity_main.xml" value="0.11302083333333333" />
+        <entry key="..\:/AndroidProjects/TestSitek/app/src/main/res/layout/fr_authorization.xml" value="0.12" />
+        <entry key="..\:/AndroidProjects/TestSitek/app/src/main/res/layout/fr_sign_in.xml" value="0.264" />
       </map>
     </option>
   </component>
