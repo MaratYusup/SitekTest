@@ -1,17 +1,18 @@
 package com.example.mobileclient.data.network
 
+import android.util.Base64
+import com.example.mobileclient.data.network.model.UserDataDto
+import com.example.mobileclient.data.network.model.UserDto
 import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface ApiService {
 
-//    @GET("{imei}" + NetConst.GET_USERS_URL)
-//    suspend fun getUsers(@Path("imei") imei: String): Response<*>
-
-    @GET(NetConst.GET_USERS_URL)
-    suspend fun getUsers(): Response<*>
+    @GET("{imei}" + NetConst.GET_USERS_URL)
+    suspend fun getUsersList(
+        @Header(NetConst.AUTHORIZATION) header: String,
+        @Path(NetConst.IMEI) imei: String,
+    ): Response<UserDto>
 
     @GET("{imei}" + NetConst.AUTHENTICATION_URL)
     suspend fun authentication(

@@ -1,31 +1,38 @@
 package com.example.mobileclient.presentation.viewmodel
 
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.mobileclient.domain.model.UserDataWithRespCode
 import com.example.mobileclient.domain.usecase.CheckPasswordFieldUseCase
-import com.example.mobileclient.domain.usecase.GetUsersUseCase
+import com.example.mobileclient.domain.usecase.GetUsersListUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class FrSignInVM @Inject constructor(
+    private val application: Application,
     private val checkPasswordFieldUseCase: CheckPasswordFieldUseCase,
-    private val getUsersUseCase: GetUsersUseCase,
+    private val getUsersListUseCase: GetUsersListUseCase,
 ) : ViewModel() {
 
-    fun getUsers(){
+    private var _userDataList = MutableLiveData<UserDataWithRespCode>()
+    var userDataList: LiveData<UserDataWithRespCode> = _userDataList
+
+    fun getUsersList() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                getUsersUseCase.execute()
+                _userDataList.postValue(getUsersListUseCase.execute())
             }
         }
     }
 
-//    private var _resultCheckUserName = MutableLiveData<Int?>()
-//    var resultCheckUserName: LiveData<Int?> = _resultCheckUserName
+
+
+
 //
 //    private var _resultCheckPassword = MutableLiveData<Int?>()
 //    var resultCheckPassword: LiveData<Int?> = _resultCheckPassword

@@ -24,7 +24,13 @@
         <AutoCompleteTextView
             android:id="@+id/fr_sign_in_login_text"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/common_auth_text_edit_height"/>
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/common_auth_text_edit_height"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMaxTextSize="@dimen/common_auth_texts_max"
+            android:autoSizeMinTextSize="@dimen/common_auth_texts_min"
+            android:autoSizeStepGranularity="@dimen/common_auth_texts_step_granularity"
+            />
 
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -50,6 +56,10 @@
             android:id="@+id/fr_sign_in_password_text"
             android:layout_width="match_parent"
             android:layout_height="@dimen/common_auth_text_edit_height"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMaxTextSize="@dimen/common_auth_texts_max"
+            android:autoSizeMinTextSize="@dimen/common_auth_texts_min"
+            android:autoSizeStepGranularity="@dimen/common_auth_texts_step_granularity"
             android:inputType="textPassword"
             app:errorEnabled="true" />
 
@@ -75,14 +85,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.15" />
+        app:layout_constraintGuide_percent="0.1" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/fr_sign_in_guideline_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.85" />
+        app:layout_constraintGuide_percent="0.9" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/fr_sign_in_guideline_top"
