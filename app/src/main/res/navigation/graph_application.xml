@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/graph_application"
+    android:label="Вход"
     app:startDestination="@id/frSignIn">
 
     <fragment
         android:id="@+id/frSignIn"
         android:name="com.example.mobileclient.presentation.fragment.FrSignIn"
-        android:label="fr_sign_in"
-        tools:layout="@layout/fr_sign_in" >
+        android:label="@string/label_fr_sign_in"
+        tools:layout="@layout/fr_sign_in">
         <action
             android:id="@+id/action_frSignIn_to_frAuthorization"
             app:destination="@id/frAuthorization" />
@@ -17,6 +18,6 @@
     <fragment
         android:id="@+id/frAuthorization"
         android:name="com.example.mobileclient.presentation.fragment.FrAuthorization"
-        android:label="fr_authorization"
+        android:label="@string/label_fr_authorization"
         tools:layout="@layout/fr_authorization" />
 </navigation>

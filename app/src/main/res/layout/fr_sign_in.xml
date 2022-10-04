@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.fragment.FrSignIn">
 
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/fr_sign_in_login"
         android:layout_width="0dp"
@@ -99,6 +100,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25" />
+        app:layout_constraintGuide_percent="0.15" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
