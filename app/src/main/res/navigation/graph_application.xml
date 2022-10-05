@@ -13,11 +13,20 @@
         tools:layout="@layout/fr_sign_in">
         <action
             android:id="@+id/action_frSignIn_to_frInfoList"
-            app:destination="@id/frInfoList" />
+            app:destination="@id/frInfoList"
+            app:enterAnim="@anim/slide_in_up"
+            app:exitAnim="@anim/alpha_down"
+            app:popEnterAnim="@anim/alpha_up"
+            app:popExitAnim="@anim/slide_out_down"
+            app:popUpTo="@id/frSignIn" />
     </fragment>
     <fragment
         android:id="@+id/frInfoList"
         android:name="com.example.mobileclient.presentation.fragment.FrInfoList"
-        android:label="@string/label_fr_authorization"
-        tools:layout="@layout/fr_info_list" />
+        android:label="@string/label_fr_info_list"
+        tools:layout="@layout/fr_info_list">
+        <argument
+            android:name="UID"
+            app:argType="string" />
+    </fragment>
 </navigation>

@@ -1,20 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".presentation.fragment.FrInfoList">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:autoSizeMaxTextSize="@dimen/auth_success_texts_max"
-        android:autoSizeMinTextSize="@dimen/auth_success_texts_min"
-        android:autoSizeStepGranularity="@dimen/auth_success_texts_step_granularity"
-        android:autoSizeTextType="uniform"
-        android:gravity="center"
-        android:text="@string/fr_authorization_btn_login_text"
-        android:textStyle="bold" />
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/fr_info_card_margin"
+        android:layout_marginTop="@dimen/fr_info_card_margin"
+        android:layout_marginEnd="@dimen/fr_info_card_margin"
+        app:cardCornerRadius="@dimen/fr_info_card_corner"
+        android:elevation="@dimen/fr_info_card_elevation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fr_info_title_margin_top"
+                android:autoSizeMaxTextSize="@dimen/fr_info_texts_max"
+                android:autoSizeMinTextSize="@dimen/fr_info_texts_min"
+                android:autoSizeStepGranularity="@dimen/fr_info_texts_step_granularity"
+                android:text="Пользователь"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/textView_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fr_info_title_text_margin_top"
+                android:autoSizeMaxTextSize="@dimen/fr_info_texts_max"
+                android:autoSizeMinTextSize="@dimen/fr_info_texts_min"
+                android:autoSizeStepGranularity="@dimen/fr_info_texts_step_granularity"
+                android:text="Пользователь"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView_title">
+
+            </TextView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView_info_list"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/fr_info_rw_margin_right_left"
+                android:layout_marginTop="@dimen/fr_info_rw_margin_top_bottom"
+                android:layout_marginEnd="@dimen/fr_info_rw_margin_right_left"
+                android:layout_marginBottom="@dimen/fr_info_rw_margin_top_bottom"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView_text">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

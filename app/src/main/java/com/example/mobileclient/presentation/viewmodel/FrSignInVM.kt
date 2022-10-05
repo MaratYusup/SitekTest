@@ -91,4 +91,8 @@ class FrSignInVM @Inject constructor(
             }
         }
     }
+
+    fun resetAccessAllow() {
+        _accessAllow.value = false
+    }
 }

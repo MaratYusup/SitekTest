@@ -48,6 +48,7 @@ class FrSignIn : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var userDataModelSelected: UserDataModel? = null
+        var actualUid = ""
         viewModel =
             ViewModelProvider(this, viewModelFactory)[FrSignInVM::class.java]
 
@@ -79,8 +80,10 @@ class FrSignIn : Fragment() {
 
         viewModel.accessAllow.observe(viewLifecycleOwner) {
             if (it) {
-                findNavController().navigate(R.id.action_frSignIn_to_frInfoList)
+                findNavController().navigate(FrSignInDirections.actionFrSignInToFrInfoList(actualUid))
+                viewModel.resetAccessAllow()
             }
+
         }
 
         binding.frSignInBtnLogin.setOnClickListener {
@@ -88,6 +91,7 @@ class FrSignIn : Fragment() {
                 userDataModel = userDataModelSelected,
                 spinnerText = binding.frSignInLoginText.text.toString(),
             )
+            actualUid = userData.uid ?: ""
 
             viewModel.apply {
                 checkLogin(userData.user ?: "")

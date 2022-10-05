@@ -1,4 +1,6 @@
 package com.example.mobileclient.domain.model
 
-class UserAuthDataInfo {
-}
+data class UserAuthDataInfo (
+    var title: String = "",
+    var text: String = "",
+)

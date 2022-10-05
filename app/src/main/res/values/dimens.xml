@@ -12,7 +12,7 @@
 
     <dimen name="common_auth_btns_text_max">13sp</dimen>
     <dimen name="common_auth_btns_text_min">5sp</dimen>
-    <dimen name="common_auth_btns_text_step_granularity">2sp</dimen>
+    <dimen name="common_auth_btns_text_step_granularity">1sp</dimen>
     <dimen name="common_auth_btns_margin_top">1dp</dimen>
 
 
@@ -21,4 +21,36 @@
     <dimen name="auth_success_texts_step_granularity">2sp</dimen>
 
 
+
+    <dimen name="fr_info_card_margin">15dp</dimen>
+    <dimen name="fr_info_card_elevation">5dp</dimen>
+    <dimen name="fr_info_card_corner">5dp</dimen>
+
+    <dimen name="fr_info_title_margin_top">50dp</dimen>
+    <dimen name="fr_info_title_text_margin_top">15dp</dimen>
+
+    <dimen name="fr_info_texts_max">30sp</dimen>
+    <dimen name="fr_info_texts_min">20sp</dimen>
+    <dimen name="fr_info_texts_step_granularity">1sp</dimen>
+    <dimen name="fr_info_texts_margin_top">1dp</dimen>
+
+    <dimen name="fr_info_rw_margin_right_left">15dp</dimen>
+    <dimen name="fr_info_rw_margin_top_bottom">15dp</dimen>
+
+    <dimen name="rw_fr_info_list_height">80dp</dimen>
+    <dimen name="rw_fr_info_list_margin">1dp</dimen>
+
+    <dimen name="rw_fr_info_list_texts_max">13sp</dimen>
+    <dimen name="rw_fr_info_list_texts_min">5sp</dimen>
+    <dimen name="rw_fr_info_list_texts_step_granularity">2sp</dimen>
+
+    <dimen name="rw_fr_info_list_elevation">-1dp</dimen>
+    <dimen name="rw_fr_info_list_corner">1dp</dimen>
+    <dimen name="rw_fr_info_list_texts_title_margin_top">1dp</dimen>
+    <dimen name="rw_fr_info_list_texts_title_margin_bottom">10dp</dimen>
+    <dimen name="rw_fr_info_list_texts_title_margin_left">10dp</dimen>
+
+    <dimen name="rw_fr_info_list_texts_text_margin_top">1dp</dimen>
+    <dimen name="rw_fr_info_list_texts_text_margin_bottom">1dp</dimen>
+    <dimen name="rw_fr_info_list_texts_text_margin_left">10dp</dimen>
 </resources>
