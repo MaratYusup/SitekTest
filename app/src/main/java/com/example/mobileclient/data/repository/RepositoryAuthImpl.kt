@@ -63,6 +63,7 @@ class RepositoryAuthImpl @Inject constructor(
 
         when (response?.code()) {
             200 -> { // Успешно
+                Log.i("res", response.body().toString())
                 return 200
             }
             202 -> { // неверный пароль
