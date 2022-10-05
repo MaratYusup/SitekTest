@@ -43,6 +43,7 @@ dependencies {
     def retrofit_version = '2.9.0'
     def ok_http_logging = '4.3.1'
     def dagger_version = '2.43.2'
+    def room_version = '2.4.0'
     def coroutines_core_version = '1.5.2'
     def coroutines_android_version = '1.6.1'
     def androidx_core_version = '1.8.0'
@@ -66,6 +67,12 @@ dependencies {
 //Dagger2
     implementation "com.google.dagger:dagger:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
+
+// Room database
+    implementation("androidx.room:room-runtime:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+// Room database optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:$room_version")
 
 // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"

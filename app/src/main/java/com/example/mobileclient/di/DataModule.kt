@@ -1,5 +1,8 @@
 package com.example.mobileclient.di
 
+import android.app.Application
+import com.example.mobileclient.data.database.AppDatabase
+import com.example.mobileclient.data.database.UserAuthDataModelDao
 import com.example.mobileclient.data.network.ApiFactory
 import com.example.mobileclient.data.network.ApiService
 import com.example.mobileclient.data.repository.RepositoryAuthImpl
@@ -19,6 +22,12 @@ interface DataModule {
         @ApplicationScope
         fun providesApiService(): ApiService {
             return ApiFactory.apiService
+        }
+
+        @Provides
+        @ApplicationScope
+        fun providesUserAuthDataModelDao(application: Application): UserAuthDataModelDao {
+            return AppDatabase.getInstance(application).userAuthDataModelDao
         }
     }
 }
