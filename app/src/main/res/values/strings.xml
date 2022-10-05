@@ -12,7 +12,7 @@
 
     <string name="wrong_login_field_error">Не выбран логин</string>
     <string name="wrong_password_field_error">Пароль не должен быть пустым</string>
-    <string name="token_400_error">Неверный пароль</string>
+    <string name="token_202_error">Неверный пароль</string>
     <string name="error_try_later">Неизвестная ошибка, попробуйте позже</string>
 
 </resources>

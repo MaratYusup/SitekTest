@@ -14,6 +14,7 @@ interface ApiService {
 
     @GET("{imei}" + NetConst.AUTHENTICATION_URL)
     suspend fun authentication(
+        @Header(NetConst.AUTHORIZATION) header: String,
         @Path(NetConst.IMEI) imei: String,
         @Query(NetConst.UID) uid: String,
         @Query(NetConst.PASS) pass: String,

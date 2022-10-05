@@ -46,9 +46,11 @@ class RepositoryAuthImpl @Inject constructor(
         copyFromDevice: Boolean,
         nfc: String
     ): Int {
+        val header = Credentials.basic("http", "http")
 
         val response = try {
             apiService.authentication(
+                header = header,
                 imei = imei,
                 uid = uid,
                 pass = pass,
@@ -59,15 +61,12 @@ class RepositoryAuthImpl @Inject constructor(
             null
         }
 
-        try {
-            Log.i("responceCode", response?.code().toString())
-            Log.i("responceBody", response?.body().toString())
-        } catch (e: Exception) {
-        }
-
         when (response?.code()) {
             200 -> { // Успешно
                 return 200
+            }
+            202 -> { // неверный пароль
+                return 202
             }
             else -> { // Ошибка
             }

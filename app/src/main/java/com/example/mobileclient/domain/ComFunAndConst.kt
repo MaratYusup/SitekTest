@@ -17,7 +17,7 @@ object ComFunAndConst {
     public fun checkSignInResponseCode(responseCode: Int): Int?{
         return when (responseCode) {
             200 -> null
-            400 -> R.string.token_400_error
+            202 -> R.string.token_202_error
             else -> R.string.error_try_later
         }
     }
