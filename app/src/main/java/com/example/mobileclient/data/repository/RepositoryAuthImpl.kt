@@ -1,8 +1,10 @@
 package com.example.mobileclient.data.repository
 
 import android.util.Log
+import com.example.mobileclient.data.database.UserAuthDataModelDao
 import com.example.mobileclient.data.mapper.Mapper
 import com.example.mobileclient.data.network.ApiService
+import com.example.mobileclient.domain.model.UserAuthDataModel
 import com.example.mobileclient.domain.model.UserDataWithRespCodeModel
 import com.example.mobileclient.domain.repository.RepositoryAuth
 import okhttp3.Credentials
@@ -10,6 +12,7 @@ import javax.inject.Inject
 
 class RepositoryAuthImpl @Inject constructor(
     private val apiService: ApiService,
+    private val userAuthDataModelDao: UserAuthDataModelDao,
     private val mapper: Mapper,
 ) : RepositoryAuth {
 
@@ -41,10 +44,11 @@ class RepositoryAuthImpl @Inject constructor(
 
     override suspend fun authentication(
         imei: String,
+        user: String,
         uid: String,
         pass: String,
         copyFromDevice: Boolean,
-        nfc: String
+        nfc: String,
     ): Int {
         val header = Credentials.basic("http", "http")
 
@@ -63,7 +67,18 @@ class RepositoryAuthImpl @Inject constructor(
 
         when (response?.code()) {
             200 -> { // Успешно
-                Log.i("res", response.body().toString())
+                val userAuthDto = response.body()
+
+                val userAuthDataModelDb = mapper.mapUserAuthDataModelDtoToDb(
+                    userAuthDataModelDto = userAuthDto?.authentication,
+                    user = user,
+                    uid = uid,
+                )
+
+                userAuthDataModelDao.updateItemByUID(
+                    userAuthDataModelDb = userAuthDataModelDb,
+                    uid = uid,
+                )
                 return 200
             }
             202 -> { // неверный пароль
@@ -73,5 +88,10 @@ class RepositoryAuthImpl @Inject constructor(
             }
         }
         return -1
+    }
+
+    override suspend fun getUserAuthFromDb(uid: String): UserAuthDataModel {
+        return mapper.mapUserAuthDataModelDbToDto(userAuthDataModelDao.getItemByUid(uid = uid))
+            ?: UserAuthDataModel()
     }
 }
