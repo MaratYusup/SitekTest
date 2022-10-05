@@ -12,12 +12,12 @@
         android:label="@string/label_fr_sign_in"
         tools:layout="@layout/fr_sign_in">
         <action
-            android:id="@+id/action_frSignIn_to_frAuthorization"
-            app:destination="@id/frAuthorization" />
+            android:id="@+id/action_frSignIn_to_frInfoList"
+            app:destination="@id/frInfoList" />
     </fragment>
     <fragment
-        android:id="@+id/frAuthorization"
-        android:name="com.example.mobileclient.presentation.fragment.FrAuthorization"
+        android:id="@+id/frInfoList"
+        android:name="com.example.mobileclient.presentation.fragment.FrInfoList"
         android:label="@string/label_fr_authorization"
-        tools:layout="@layout/fr_authorization" />
+        tools:layout="@layout/fr_info_list" />
 </navigation>

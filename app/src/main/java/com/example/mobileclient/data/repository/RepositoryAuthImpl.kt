@@ -7,6 +7,8 @@ import com.example.mobileclient.data.network.ApiService
 import com.example.mobileclient.domain.model.UserAuthDataModel
 import com.example.mobileclient.domain.model.UserDataWithRespCodeModel
 import com.example.mobileclient.domain.repository.RepositoryAuth
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import okhttp3.Credentials
 import javax.inject.Inject
 
@@ -93,5 +95,11 @@ class RepositoryAuthImpl @Inject constructor(
     override suspend fun getUserAuthFromDb(uid: String): UserAuthDataModel {
         return mapper.mapUserAuthDataModelDbToDto(userAuthDataModelDao.getItemByUid(uid = uid))
             ?: UserAuthDataModel()
+    }
+
+    override fun getUserAuthFlowFromDb(uid: String): Flow<UserAuthDataModel?> {
+        return userAuthDataModelDao.getItemByUidFlow(uid = uid).map {
+            mapper.mapUserAuthDataModelDbToDto(it)
+        }
     }
 }

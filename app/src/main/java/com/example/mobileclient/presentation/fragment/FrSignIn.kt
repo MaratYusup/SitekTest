@@ -2,7 +2,6 @@ package com.example.mobileclient.presentation.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,6 +28,8 @@ class FrSignIn : Fragment() {
 
     private val component by lazy {
         (requireActivity().application as MobileClientApp).component
+            .fragmentComponentFactory()
+            .create(uid = "")
     }
 
     override fun onAttach(context: Context) {
@@ -78,7 +79,7 @@ class FrSignIn : Fragment() {
 
         viewModel.accessAllow.observe(viewLifecycleOwner) {
             if (it) {
-                findNavController().navigate(R.id.action_frSignIn_to_frAuthorization)
+                findNavController().navigate(R.id.action_frSignIn_to_frInfoList)
             }
         }
 
@@ -89,10 +90,11 @@ class FrSignIn : Fragment() {
             )
 
             viewModel.apply {
-                checkLogin(userData.user?: "")
+                checkLogin(userData.user ?: "")
                 checkPassword(binding.frSignInPasswordText.text.toString())
-                signIn(
-                    uid = userData.uid?: "",
+                authentication(
+                    user = userData.user ?: "",
+                    uid = userData.uid ?: "",
                     password = binding.frSignInPasswordText.text.toString()
                 )
             }

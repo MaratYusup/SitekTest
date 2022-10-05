@@ -6,7 +6,7 @@ import javax.inject.Inject
 class AuthenticationUseCase @Inject constructor(
     private val repository: RepositoryAuth
 ) {
-    suspend fun execute(uid: String, pass: String,): Int {
+    suspend fun execute(user: String, uid: String, pass: String,): Int {
         /*
         Для получения IMEI необходимо разрешение READ_PHONE_STATE ,
         а с Android 10 (SDK 29), теперь необходимо разрешение READ_PRIVILEGED_PHONE_STATE ,
@@ -16,6 +16,7 @@ class AuthenticationUseCase @Inject constructor(
         val imei = "111111111111111"
         return repository.authentication(
             imei = imei,
+            user = user,
             uid = uid,
             pass = pass,
             copyFromDevice = false,

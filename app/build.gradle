@@ -43,9 +43,10 @@ dependencies {
     def retrofit_version = '2.9.0'
     def ok_http_logging = '4.3.1'
     def dagger_version = '2.43.2'
-    def room_version = '2.4.0'
+    def room_version = '2.4.3'
     def coroutines_core_version = '1.5.2'
     def coroutines_android_version = '1.6.1'
+    def lifecycle_version = "2.5.1"
     def androidx_core_version = '1.8.0'
     def androidx_appcompat_version = '1.5.1'
     def material_version = '1.6.1'
@@ -84,6 +85,9 @@ dependencies {
 //Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_core_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_android_version"
+
+// LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
 //UI
     implementation "androidx.core:core-ktx:$androidx_core_version"

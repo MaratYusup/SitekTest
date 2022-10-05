@@ -2,20 +2,21 @@ package com.example.mobileclient.presentation.fragment
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.mobileclient.R
-import com.example.mobileclient.databinding.FrAuthorizationBinding
+import androidx.fragment.app.Fragment
+import com.example.mobileclient.databinding.FrSignInBinding
 import com.example.mobileclient.presentation.app.MobileClientApp
 
-class FrAuthorization : Fragment() {
-    private var _binding: FrAuthorizationBinding? = null
+class FrInfoList : Fragment() {
+    private var _binding: FrSignInBinding? = null
     private val binding get() = _binding!!
 
     private val component by lazy {
         (requireActivity().application as MobileClientApp).component
+            .fragmentComponentFactory()
+            .create(uid = "")
     }
 
     override fun onAttach(context: Context) {
@@ -27,7 +28,7 @@ class FrAuthorization : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FrAuthorizationBinding.inflate(inflater, container, false)
+        _binding = FrSignInBinding.inflate(inflater, container, false)
         return binding.root
     }
 

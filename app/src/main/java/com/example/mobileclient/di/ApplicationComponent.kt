@@ -1,7 +1,7 @@
 package com.example.mobileclient.di
 
 import android.app.Application
-import com.example.mobileclient.presentation.fragment.FrAuthorization
+import com.example.mobileclient.presentation.fragment.FrInfoList
 import com.example.mobileclient.presentation.fragment.FrSignIn
 import dagger.BindsInstance
 import dagger.Component
@@ -10,13 +10,11 @@ import dagger.Component
 @Component (
     modules = [
         DataModule::class,
-        ViewModelModule::class,
     ]
 )
 interface ApplicationComponent {
 
-    fun inject (fragment: FrAuthorization)
-    fun inject (fragment: FrSignIn)
+    fun fragmentComponentFactory(): FragmentComponent.Factory
 
     @Component.Factory
     interface Factory {

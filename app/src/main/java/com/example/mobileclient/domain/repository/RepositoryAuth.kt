@@ -2,6 +2,7 @@ package com.example.mobileclient.domain.repository
 
 import com.example.mobileclient.domain.model.UserAuthDataModel
 import com.example.mobileclient.domain.model.UserDataWithRespCodeModel
+import kotlinx.coroutines.flow.Flow
 
 interface RepositoryAuth {
 
@@ -17,4 +18,6 @@ interface RepositoryAuth {
     ): Int
 
     suspend fun getUserAuthFromDb(uid: String): UserAuthDataModel
+
+    fun getUserAuthFlowFromDb(uid: String): Flow<UserAuthDataModel?>
 }

@@ -1,6 +1,7 @@
 package com.example.mobileclient.data.database
 
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface UserAuthDataModelDao {
@@ -22,5 +23,8 @@ interface UserAuthDataModelDao {
 
     @Query("select * from userAuthDbTable where userAuth_uid ==:uid ")
     fun getItemByUid(uid: String?): UserAuthDataModelDb?
+
+    @Query("select * from userAuthDbTable where userAuth_uid ==:uid ")
+    fun getItemByUidFlow(uid: String?): Flow<UserAuthDataModelDb?>
 
 }

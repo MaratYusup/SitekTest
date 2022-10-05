@@ -79,12 +79,12 @@ class FrSignInVM @Inject constructor(
     }
 
 
-    fun signIn(uid: String, password: String) {
+    fun authentication(user: String, uid: String, password: String) {
         if ((_resultCheckLogin.value == null) && (_resultCheckPassword.value == null)) {
 
             viewModelScope.launch {
                 withContext(Dispatchers.IO) {
-                    val userAuthResp = authenticationUseCase.execute(uid, password)
+                    val userAuthResp = authenticationUseCase.execute(user, uid, password)
                     _resultCheckPassword.postValue(checkSignInResponseCode(userAuthResp))
                     _accessAllow.postValue(userAuthResp == 200)
                 }
